@@ -1,6 +1,6 @@
 const path = require("path");
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const mnemonic = "promote child furnace come consider border choose close people install stereo output trip kind bacon";
+//const mnemonic = "promote child furnace come consider border choose close people install stereo output trip kind bacon";
 const infuraKey = "2ac309a27f0241399ed6aad501f8f37a";
 const fs = require('fs');
 //Add .secret file in root folder and place your HD wallet's mnemonic in that file

@@ -17,25 +17,47 @@ function App() {
 
   const [reload, setReload] = useState([]);
 
-  function usePrevious(value) {
+  /*function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }*/
+
+
+  /*function usePrevious(value) {
     const ref = useRef([]);
     return ref.current;
   }
-  const prevData = usePrevious(adopters);
+  const prevData = usePrevious(adopters);*/
 
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
 
-  useEffect(() => {
+  const Component = (props) => {
+    adopters = props
+    const prevData= usePrevious(adopters);
     
-    setInterval(() => {
-      if(!isLoading && loadAdopters == false) 
+    useEffect(() => {
+     
+      setInterval(() => {
+        if(!isLoading && loadAdopters == false) 
         dispatch(loadAdopters({contract}))
         console.log(adopters)
-        
-       }, 2000);
-    if (adopters !== prevData)
-    return setReload(adopters)   
+         }, 2000);
+    //if (adopters !== prevData)
+    if(prevData.join() !== adopters.join()) 
+      console.log ("notEqual")
+      return setReload(adopters)   
 
   }, [reload]);
+}
   
   /* useEffect(() => {
   //if(isLoading)  

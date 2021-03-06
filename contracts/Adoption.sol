@@ -8,6 +8,7 @@ contract Adoption{
     //Adopting a pet
     function adopt(uint petId) public returns(uint){
         require(petId >= 0 && petId <=15,"The Id should be zero or less than 15");
+        require (adopters[petId] == empty);
         adopters[petId] = msg.sender;
 
         return petId;

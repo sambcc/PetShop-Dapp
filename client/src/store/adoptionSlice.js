@@ -19,9 +19,9 @@ export const initWeb3 = createAsyncThunk(
     
     
     //1. getting deployed contract local Ganache
-    let network = AdoptionArtifact.networks[NETWORK_GANACHE];
+    //let network = AdoptionArtifact.networks[NETWORK_GANACHE];
     //getting deployed contract on Ropsten
-    //let network = AdoptionArtifact.networks[NETWORK_ROPSTEN]
+    let network = AdoptionArtifact.networks[NETWORK_ROPSTEN]
 
     if(!network){
       console.log("Init Web3: Setting up Ropsten network");
