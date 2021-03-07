@@ -15,70 +15,15 @@ function App() {
       dispatch(initWeb3());  
   }, []);
 
-  const [reload, setReload] = useState([]);
-
-  /*function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }*/
-
-
-  /*function usePrevious(value) {
-    const ref = useRef([]);
-    return ref.current;
-  }
-  const prevData = usePrevious(adopters);*/
-
-  function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
-
-  const Component = (props) => {
-    adopters = props
-    const prevData= usePrevious(adopters);
-    
-    useEffect(() => {
-     
-      setInterval(() => {
+useEffect(() => {
+    //if(!isLoading && loadAdopters == false) 
+    setInterval(() => {
         if(!isLoading && loadAdopters == false) 
-        dispatch(loadAdopters({contract}))
-        console.log(adopters)
-         }, 2000);
-    //if (adopters !== prevData)
-    if(prevData.join() !== adopters.join()) 
-      console.log ("notEqual")
-      return setReload(adopters)   
+      dispatch(loadAdopters({contract}))
+      console.log(adopters)
+       }, 2000);
 
-  }, [reload]);
-}
-  
-  /* useEffect(() => {
-  //if(isLoading)  
-    setInterval(() => {
-    const newData = dispatch(loadAdopters({contract})); 
-    if (newData === oldData)
-      return setReload(newData)
-      //setReload(adopters)
-    }, 2000); 
-
-  }, [reload]);*/
- /* useEffect(() => {
-  //if(isLoading)  
-    setInterval(() => {
-    const newData = dispatch(loadAdopters({contract})); 
-    if (newData === oldData)
-      return setReload(newData)
-      //setReload(adopters)
-    }, 2000); 
-
-  }, [reload]);*/
+}, [adopters]); 
   
   
   //Don't render if adopters not loaded
